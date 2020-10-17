@@ -5,10 +5,11 @@ var Engine = Matter.Engine,
  
 var particles = [];
 var plinkos = [];
-
+var divisions = [];
 var divisionHeight=300;
 var score =0;
-var gameState = PLAY
+var particle
+var gameState = "PLAY"
 function setup() {
   createCanvas(800, 800);
   engine = Engine.create();
@@ -72,8 +73,7 @@ function setup() {
           }
         }
     }
-
- 
+  } 
 
 
 function draw() {
@@ -86,7 +86,7 @@ function draw() {
      plinkos[i].display();
    }
    if(frameCount%60===0){
-     particles.push(new particle(random(width/2-30, width/2+30), 10,10));
+     particles.push(new Particle(random(width/2-30, width/2+30), 10,10));
      score++;
    }
   for (var j = 0; j < particles.length; j++) {
@@ -101,6 +101,6 @@ function mousePressed()
 {
   if(gameState!=="END"){
     count++;
-    particle = new particle(mouseX,10,10,10)
+    particle = new Particle(mouseX,10,10,10)
   }
 }
